@@ -1,0 +1,183 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Finalize and polish the complete FUSION GEAR app - Frontend",
+  "requirements": [
+    {
+      "id": "REQ-16",
+      "summary": "Audit all frontend pages and fix broken data flows, missing React Query wiring, and UI inconsistencies so every screen fully reads from and writes to the backend actor",
+      "acceptanceCriteria": [
+        "Dashboard correctly displays live daily and monthly sales totals, pending invoices, and top services from the backend.",
+        "Customer Profile page lists, creates, edits, and deletes customer records via backend calls with no stale-data issues.",
+        "Create Bill page submits a complete service record and navigates to the Invoice View on success.",
+        "Invoice View page renders all invoice data (customer info, services, billing breakdown, payment status) fetched from the backend.",
+        "Marking an invoice as paid updates backend state and is reflected immediately in the UI.",
+        "Service History page returns correct results when searching by bike number."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/DashboardPage.tsx",
+          "operation": "modify",
+          "description": "Audit and fix React Query hooks to ensure getDailySalesTotal, getMonthlySalesTotal, getPendingInvoices, and getServiceFrequency are correctly wired with proper loading states, error handling, and data display. Verify that all analytics queries return live data from the backend actor and handle empty states gracefully."
+        },
+        {
+          "path": "frontend/src/pages/CustomerProfilePage.tsx",
+          "operation": "modify",
+          "description": "Audit and fix all CRUD operations (list, create, edit, delete) to ensure they use the correct React Query mutations and queries from useQueries.ts. Verify that after mutations, the customer list is invalidated and refetched to avoid stale data. Ensure search filtering works correctly on the fetched data."
+        },
+        {
+          "path": "frontend/src/pages/CreateBillPage.tsx",
+          "operation": "modify",
+          "description": "Audit the form submission flow to ensure all service record fields (serviceType flags, customService, labourCharges, sparePartsCost, discount, gstFlag, gstAmount, subtotal, total, concierge) are correctly sent to createServiceRecord. Verify successful navigation to InvoiceViewPage with the returned invoice ID after submission. Ensure billing calculations match the backend formula."
+        },
+        {
+          "path": "frontend/src/pages/InvoiceViewPage.tsx",
+          "operation": "modify",
+          "description": "Audit data fetching to ensure getInvoice correctly retrieves invoice and linked customer data. Verify that all invoice fields (customer info, services, billing breakdown, payment status) are displayed. Ensure the 'Mark as Paid' action calls updateInvoiceStatus and immediately refetches the invoice to reflect the new status in the UI."
+        },
+        {
+          "path": "frontend/src/pages/ServiceHistoryPage.tsx",
+          "operation": "modify",
+          "description": "Audit the search flow to ensure getServiceHistoryByBikeNumber is called with the correct bike number parameter and results are displayed in chronological order. Verify that expandable invoice details render correctly with all service and billing information."
+        },
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Audit all query and mutation hooks to ensure they correctly map to the backend interface methods. Verify enabled conditions, retry logic, and query invalidation after mutations. Add missing hooks if any CRUD operations are not covered. Ensure error handling is consistent across all hooks."
+        }
+      ]
+    },
+    {
+      "id": "REQ-17",
+      "summary": "Polish the visual theme across all pages to ensure dark charcoal/gunmetal background, amber/orange accents, large tap targets, and industrial typography are consistently applied with no mismatched colours, unstyled elements, or layout overflow issues on mobile viewports",
+      "acceptanceCriteria": [
+        "No page renders with a white or off-theme background.",
+        "All primary action buttons use the amber/orange accent colour with sufficient contrast.",
+        "Navigation is fully usable on a 375px-wide mobile viewport without horizontal scroll.",
+        "The FUSION GEAR logo is displayed correctly in the header and on the login page."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Audit global CSS custom properties and utility classes to ensure the dark charcoal/gunmetal background (--background), amber/orange accents (--primary, --accent), and industrial typography (Rajdhani) are correctly defined and applied. Verify that no light-mode overrides exist. Ensure all color tokens match the garage theme defined in tailwind.config.js."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Audit the Tailwind theme configuration to ensure amber/orange accent colors, dark garage background colors, and font families (Rajdhani, Inter) are correctly defined. Verify that the color palette matches the intended dark industrial theme with sufficient contrast for accessibility."
+        },
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "modify",
+          "description": "Audit the header and navigation to ensure the FUSION GEAR logo at frontend/public/assets/generated/fusion-gear-logo.dim_512x512.png is displayed correctly. Verify that navigation links use amber/orange accents on hover/active states. Test mobile responsiveness on 375px viewport to ensure no horizontal scroll and that the mobile menu is fully usable with large tap targets."
+        },
+        {
+          "path": "frontend/src/pages/LoginPage.tsx",
+          "operation": "modify",
+          "description": "Audit the login page to ensure the FUSION GEAR logo at frontend/public/assets/generated/fusion-gear-logo.dim_512x512.png and banner at frontend/public/assets/generated/fusion-gear-banner.dim_1200x300.png are displayed correctly. Verify dark background, amber/orange accent buttons, and no white or off-theme elements. Ensure the login button has sufficient size and contrast for mobile users."
+        },
+        {
+          "path": "frontend/src/pages/DashboardPage.tsx",
+          "operation": "modify",
+          "description": "Audit the dashboard layout to ensure the FUSION GEAR banner at frontend/public/assets/generated/fusion-gear-banner.dim_1200x300.png is displayed correctly. Verify that all cards, stats, and action buttons use the dark garage theme with amber/orange accents. Test mobile layout for overflow issues and ensure all interactive elements have large tap targets."
+        },
+        {
+          "path": "frontend/src/pages/CustomerProfilePage.tsx",
+          "operation": "modify",
+          "description": "Audit the customer list and form dialogs to ensure consistent use of the dark theme with amber/orange accents for buttons and interactive elements. Verify that search input, table, and action buttons are styled correctly and have no white or mismatched backgrounds. Test mobile layout for usability."
+        },
+        {
+          "path": "frontend/src/pages/CreateBillPage.tsx",
+          "operation": "modify",
+          "description": "Audit the billing form to ensure all inputs, checkboxes, toggles, and buttons use the dark garage theme with amber/orange accents. Verify that the form is fully usable on mobile viewports with large tap targets. Ensure no unstyled or white form elements exist."
+        },
+        {
+          "path": "frontend/src/pages/InvoiceViewPage.tsx",
+          "operation": "modify",
+          "description": "Audit the invoice detail page to ensure all sections (customer info, services, billing breakdown, actions) use the dark theme with amber/orange accents. Verify that action buttons (Mark as Paid, Download PDF, WhatsApp Share, Thermal Print) have consistent styling and large tap targets. Test mobile layout for overflow issues."
+        },
+        {
+          "path": "frontend/src/pages/ServiceHistoryPage.tsx",
+          "operation": "modify",
+          "description": "Audit the service history page to ensure the search input, results list, and expandable details use the dark garage theme with amber/orange accents. Verify that all interactive elements are accessible on mobile with no layout overflow."
+        },
+        {
+          "path": "frontend/src/components/CustomerForm.tsx",
+          "operation": "modify",
+          "description": "Audit the customer form component to ensure all input fields, the fuel level selector, and submit button use the dark theme with amber/orange accents. Verify visual indicators are styled correctly and the form is mobile-responsive."
+        }
+      ]
+    },
+    {
+      "id": "REQ-18",
+      "summary": "Ensure the PDF invoice generator produces a complete, correctly formatted PDF with FUSION GEAR branding, contact number 8073670402, invoice number, date/time, customer and bike details, itemized service list, and full billing breakdown",
+      "acceptanceCriteria": [
+        "Clicking 'Download PDF' on the Invoice View page triggers PDF generation.",
+        "The PDF contains the FUSION GEAR logo/name, contact number 8073670402, invoice number, and date/time.",
+        "All selected services with their costs are listed line by line.",
+        "The billing breakdown section shows subtotal, parts, labour, discount, GST (if applicable), and final total."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/utils/pdfGenerator.ts",
+          "operation": "modify",
+          "description": "Audit the PDF generation function to ensure it includes FUSION GEAR branding, contact number 8073670402, invoice number, date/time, customer details (name, phone, bike model, bike number), itemized service list with costs, and complete billing breakdown (subtotal, parts, labour, discount, GST if applicable, final total). Verify that the HTML template is styled correctly for printing and includes the logo from frontend/public/assets/generated/fusion-gear-logo.dim_512x512.png."
+        },
+        {
+          "path": "frontend/src/pages/InvoiceViewPage.tsx",
+          "operation": "modify",
+          "description": "Audit the 'Download PDF' button to ensure it correctly calls the pdfGenerator utility with the invoice and customer data. Verify that the button is visible, accessible, and triggers PDF generation when clicked."
+        }
+      ]
+    },
+    {
+      "id": "REQ-19",
+      "summary": "Ensure the WhatsApp Share button on the Invoice View page correctly pre-fills the customer's phone number and composes a message containing the invoice number, final total, and a service reminder note",
+      "acceptanceCriteria": [
+        "The WhatsApp share link opens wa.me with the customer's stored phone number.",
+        "The pre-filled message includes the invoice number, total amount, and a thank-you/reminder note.",
+        "The button is visible and accessible on the Invoice View page."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/WhatsAppShareButton.tsx",
+          "operation": "modify",
+          "description": "Audit the WhatsApp share button to ensure it constructs a wa.me URL with the customer's phone number and a pre-filled message containing the invoice number, final total, and a service reminder note. Verify that the message format is user-friendly and that the button is styled consistently with the dark garage theme using amber/orange accents."
+        },
+        {
+          "path": "frontend/src/pages/InvoiceViewPage.tsx",
+          "operation": "modify",
+          "description": "Audit the placement and visibility of the WhatsAppShareButton component on the Invoice View page. Ensure it receives the correct invoice and customer data as props and is accessible on both desktop and mobile viewports."
+        }
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "summary": "Ensure the Thermal Print section on the Invoice View page correctly renders ESC/POS-formatted receipt text for both 58mm and 80mm paper sizes, and the copy-to-clipboard action works reliably",
+      "acceptanceCriteria": [
+        "The paper-width toggle switches between 58mm and 80mm preview layouts.",
+        "The 58mm layout uses a ~32-character column width and the 80mm layout uses a ~48-character column width.",
+        "The receipt text includes shop name, invoice number, date, customer name, bike number, services with costs, and total.",
+        "Copy-to-clipboard button copies the formatted receipt text and shows a confirmation toast."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ThermalPrintSection.tsx",
+          "operation": "modify",
+          "description": "Audit the thermal print preview to ensure it correctly renders ESC/POS-formatted receipt text for both 58mm (~32 chars) and 80mm (~48 chars) paper widths. Verify that the paper-width toggle switches between layouts correctly. Ensure the receipt includes shop name (FUSION GEAR), contact number 8073670402, invoice number, date, customer name, bike number, itemized services with costs, and total. Verify that the copy-to-clipboard button copies the formatted text and displays a confirmation toast."
+        },
+        {
+          "path": "frontend/src/utils/escPosFormatter.ts",
+          "operation": "modify",
+          "description": "Audit the ESC/POS formatting functions to ensure they produce correct plain-text receipt strings for both 58mm and 80mm paper widths. Verify that the text includes shop name, contact number 8073670402, invoice number, date, customer details, itemized services, and billing totals. Ensure character widths and text alignment are correct for both paper sizes."
+        },
+        {
+          "path": "frontend/src/pages/InvoiceViewPage.tsx",
+          "operation": "modify",
+          "description": "Audit the placement and visibility of the ThermalPrintSection component on the Invoice View page. Ensure it receives the correct invoice and customer data as props and is accessible on both desktop and mobile viewports."
+        }
+      ]
+    }
+  ]
+}

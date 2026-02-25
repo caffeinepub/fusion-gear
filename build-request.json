@@ -1,0 +1,140 @@
+{
+  "kind": "build_request",
+  "title": "Finalize and polish the complete FUSION GEAR app",
+  "projectName": "Fusion Gear",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-15",
+      "text": "Audit and fix all backend Motoko actor functions to ensure Customer/Vehicle profile CRUD, Service record creation, invoice auto-numbering (FG-0001, FG-0002…), billing calculations (Total = Subtotal + Parts + Labour - Discount + optional GST at 18%), analytics queries (daily/monthly totals, pending invoices, top services), and Service History search by bike number are all fully implemented, correct, and stable.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "final it"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Creating a customer profile stores all fields (name, phone, address, bike model, bike number, KM reading, fuel level) and is retrievable by ID.",
+        "Creating a service record links to a customer, stores all service flags, custom service text, labour/parts costs, discount, GST flag/amount, and total.",
+        "Invoice numbers are sequential (FG-0001, FG-0002…) and never duplicated.",
+        "Total calculation matches: (Subtotal + Spare Parts + Labour) - Discount + GST (if toggled).",
+        "Analytics queries return correct daily totals, monthly totals, pending invoice list, and top-services ranking.",
+        "Service history search by bike number returns all matching invoices in chronological order."
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "text": "Audit all frontend pages (Dashboard, Customer Profile, Create Bill, Invoice View, Service History) and fix any broken data flows, missing React Query wiring, or UI inconsistencies so that every screen fully reads from and writes to the backend actor.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "final it"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Dashboard correctly displays live daily and monthly sales totals, pending invoices, and top services from the backend.",
+        "Customer Profile page lists, creates, edits, and deletes customer records via backend calls with no stale-data issues.",
+        "Create Bill page submits a complete service record and navigates to the Invoice View on success.",
+        "Invoice View page renders all invoice data (customer info, services, billing breakdown, payment status) fetched from the backend.",
+        "Marking an invoice as paid updates backend state and is reflected immediately in the UI.",
+        "Service History page returns correct results when searching by bike number."
+      ]
+    },
+    {
+      "id": "REQ-17",
+      "text": "Polish the visual theme across all pages: ensure the dark charcoal/gunmetal background, amber/orange accents, large tap targets, and industrial typography are consistently applied with no mismatched colours, unstyled elements, or layout overflow issues on mobile viewports.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "final it"
+        ]
+      },
+      "acceptanceCriteria": [
+        "No page renders with a white or off-theme background.",
+        "All primary action buttons use the amber/orange accent colour with sufficient contrast.",
+        "Navigation is fully usable on a 375px-wide mobile viewport without horizontal scroll.",
+        "The FUSION GEAR logo is displayed correctly in the header and on the login page."
+      ]
+    },
+    {
+      "id": "REQ-18",
+      "text": "Ensure the PDF invoice generator produces a complete, correctly formatted PDF with the FUSION GEAR branding, contact number 8073670402, invoice number, date/time, customer and bike details, itemized service list, and full billing breakdown (subtotal, parts, labour, discount, GST if applicable, final total).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "final it"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Clicking 'Download PDF' on the Invoice View page triggers PDF generation.",
+        "The PDF contains the FUSION GEAR logo/name, contact number 8073670402, invoice number, and date/time.",
+        "All selected services with their costs are listed line by line.",
+        "The billing breakdown section shows subtotal, parts, labour, discount, GST (if applicable), and final total."
+      ]
+    },
+    {
+      "id": "REQ-19",
+      "text": "Ensure the WhatsApp Share button on the Invoice View page correctly pre-fills the customer's phone number and composes a message containing the invoice number, final total, and a service reminder note.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "final it"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The WhatsApp share link opens wa.me with the customer's stored phone number.",
+        "The pre-filled message includes the invoice number, total amount, and a thank-you/reminder note.",
+        "The button is visible and accessible on the Invoice View page."
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "text": "Ensure the Thermal Print section on the Invoice View page correctly renders ESC/POS-formatted receipt text for both 58mm (~32 chars wide) and 80mm (~48 chars wide) paper sizes, and the copy-to-clipboard action works reliably.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "final it"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The paper-width toggle switches between 58mm and 80mm preview layouts.",
+        "The 58mm layout uses a ~32-character column width and the 80mm layout uses a ~48-character column width.",
+        "The receipt text includes shop name, invoice number, date, customer name, bike number, services with costs, and total.",
+        "Copy-to-clipboard button copies the formatted receipt text and shows a confirmation toast."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not alter files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui.",
+    "Keep all Motoko logic in backend/main.mo as a single actor.",
+    "Invoice number sequence must never reset or produce duplicates."
+  ],
+  "nonGoals": [
+    "Adding new features beyond those already specified.",
+    "Changing the core technology stack.",
+    "Implementing real-time WebSocket updates.",
+    "Integrating any external payment gateway."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-25T08:41:58.883Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 6,
+    "implemented": 0,
+    "items": [
+      {
+        "id": "REQ-15",
+        "summary": "Audit and fix all backend Motoko actor functions to ensure Customer/Vehicle profile CRUD, Service record creation, invoice auto-numbering (FG-0001, FG-0002…), billing calculations (Total = Subtotal + Parts + Labour - Discount + optional GST at 18%), analytics queries (daily/monthly totals, pending invoices, top services), and Service History search by bike number are all fully implemented, correct, and stable.",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-16",
+        "summary": "Audit all frontend pages (Dashboard, Customer Profile, Create Bill, Invoice View, Service History) and fix any broken data flows, missing React Query wiring, or UI inconsistencies so that every screen fully reads from and writes to the backend actor.",
+        "status": "missing",
+        "plannedFiles": [
+          "frontend/src/pages/DashboardPage.tsx",
+          "frontend/src/pages/CustomerProfilePage.tsx",
+          "frontend/src/pages/CreateBillPage.tsx",
+          "frontend/src/pages/InvoiceViewPage.tsx",
+          "frontend/src/pages/ServiceHistoryPage.tsx",
+          "frontend/src/hooks/useQueries.ts"
+        ],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-17",
+        "summary": "Polish the visual theme across all pages: ensure the dark charcoal/gunmetal background, amber/orange accents, large tap targets, and industrial typography are consistently applied with no mismatched colours, unstyled elements, or layout overflow issues on mobile viewports.",
+        "status": "missing",
+        "plannedFiles": [
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js",
+          "frontend/src/components/Layout.tsx",
+          "frontend/src/pages/LoginPage.tsx",
+          "frontend/src/pages/DashboardPage.tsx",
+          "frontend/src/pages/CustomerProfilePage.tsx",
+          "frontend/src/pages/CreateBillPage.tsx",
+          "frontend/src/pages/InvoiceViewPage.tsx",
+          "frontend/src/pages/ServiceHistoryPage.tsx",
+          "frontend/src/components/CustomerForm.tsx"
+        ],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-18",
+        "summary": "Ensure the PDF invoice generator produces a complete, correctly formatted PDF with the FUSION GEAR branding, contact number 8073670402, invoice number, date/time, customer and bike details, itemized service list, and full billing breakdown (subtotal, parts, labour, discount, GST if applicable, final total).",
+        "status": "missing",
+        "plannedFiles": [
+          "frontend/src/utils/pdfGenerator.ts",
+          "frontend/src/pages/InvoiceViewPage.tsx"
+        ],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-19",
+        "summary": "Ensure the WhatsApp Share button on the Invoice View page correctly pre-fills the customer's phone number and composes a message containing the invoice number, final total, and a service reminder note.",
+        "status": "missing",
+        "plannedFiles": [
+          "frontend/src/components/WhatsAppShareButton.tsx",
+          "frontend/src/pages/InvoiceViewPage.tsx"
+        ],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-20",
+        "summary": "Ensure the Thermal Print section on the Invoice View page correctly renders ESC/POS-formatted receipt text for both 58mm (~32 chars wide) and 80mm (~48 chars wide) paper sizes, and the copy-to-clipboard action works reliably.",
+        "status": "missing",
+        "plannedFiles": [
+          "frontend/src/components/ThermalPrintSection.tsx",
+          "frontend/src/utils/escPosFormatter.ts",
+          "frontend/src/pages/InvoiceViewPage.tsx"
+        ],
+        "matchedFiles": []
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "build-template/README.md",
+    "feature_evidence.json",
+    "frontend-implementation-plan.json",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

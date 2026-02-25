@@ -1,0 +1,230 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "FUSION GEAR is a professional Android mobile billing and management app for a bike garage. It features a dark/mechanical theme, customer/vehicle profiles, service checklists, automated billing with GST toggle, PDF invoice generation, WhatsApp sharing, Bluetooth thermal printer support (58mm/80mm), and an analytics dashboard.",
+  "architectural_notes": [
+    "Platform: Android mobile app",
+    "Recommended stack: Flutter with SQLite (local) or Firebase (cloud sync)",
+    "Dark/mechanical theme with high-contrast UI for workshop use",
+    "Bluetooth printing via ESC/POS; support 58mm and 80mm paper widths with toggle",
+    "PDF generation should be branded with garage name (FUSION GEAR) and contact info (8073670402)"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-apply-a-professional-dark-mechanical-visual-theme-across-the-entire-app-dark-charcoal-gunmetal-backgrounds-high-contrast-amber-orange-accent-colors-for-primary-actions-industrial-typography-and-gear-wrench-iconography-the-theme-must-be-optimized-for-readability-in-a-workshop-environment-with-large-tap-targets-and-clear-button-contrast",
+      "title": "Apply a professional dark/mechanical visual theme across the entire app: dark charcoal/gunmetal backgrounds, high-contrast amber/orange accent colors for primary actions, industrial typography, and gear/wrench iconography. The theme must be optimized for readability in a workshop environment with large tap targets and clear button contrast.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-customer-vehicle-profile-ui-screen-with-a-form-to-create-and-edit-customer-records-fields-name-phone-address-bike-model-bike-number-km-reading-numeric-and-fuel-level-dropdown-or-slider-empty-quarter-half-three-quarter-full-include-a-searchable-customer-list-view",
+      "title": "Build a Customer & Vehicle Profile UI screen with a form to create and edit customer records. Fields: Name, Phone, Address, Bike Model, Bike Number, KM Reading (numeric), and Fuel Level (dropdown or slider: Empty/Quarter/Half/Three-Quarter/Full). Include a searchable customer list view.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-create-new-bill-screen-with-a-service-checklist-oil-change-general-service-engine-repair-spare-parts-checkboxes-a-custom-service-text-input-numeric-inputs-for-labour-charges-and-spare-parts-cost-a-discount-field-a-gst-toggle-switch-and-a-real-time-running-total-display-using-the-formula-subtotal-spare-parts-labour-discount-gst-if-toggled-show-the-auto-generated-invoice-number-and-current-date-time-at-the-top",
+      "title": "Build a 'Create New Bill' screen with: a service checklist (Oil Change, General Service, Engine Repair, Spare Parts checkboxes), a Custom Service text input, numeric inputs for Labour Charges and Spare Parts cost, a Discount field, a GST toggle switch, and a real-time running Total display using the formula (Subtotal + Spare Parts + Labour) - Discount [+ GST if toggled]. Show the auto-generated invoice number and current date/time at the top.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-pdf-invoice-generation-in-the-frontend-when-a-bill-is-saved-produce-a-clean-branded-pdf-that-includes-the-fusion-gear-logo-name-contact-number-8073670402-invoice-number-date-time-customer-name-and-bike-details-itemized-service-list-with-costs-and-the-total-breakdown-subtotal-parts-labour-discount-gst-if-applicable-final-total",
+      "title": "Implement PDF invoice generation in the frontend: when a bill is saved, produce a clean branded PDF that includes the FUSION GEAR logo/name, contact number 8073670402, invoice number, date/time, customer name and bike details, itemized service list with costs, and the total breakdown (subtotal, parts, labour, discount, GST if applicable, final total).",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-share-via-whatsapp-button-on-the-completed-invoice-screen-tapping-it-should-open-a-whatsapp-chat-pre-filled-with-the-customer-s-phone-number-and-a-service-summary-message-invoice-number-total-amount-and-a-reminder-note-the-pdf-download-link-or-invoice-details-should-be-included-in-the-message-body",
+      "title": "Add a 'Share via WhatsApp' button on the completed invoice screen. Tapping it should open a WhatsApp chat pre-filled with the customer's phone number and a service summary message (invoice number, total amount, and a reminder note). The PDF download link or invoice details should be included in the message body.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-bluetooth-thermal-printer-section-in-the-invoice-billing-screen-a-printer-toggle-to-select-between-58mm-and-80mm-paper-width-and-a-print-receipt-button-that-generates-esc-pos-formatted-receipt-text-the-58mm-format-uses-a-narrower-column-layout-32-chars-wide-and-the-80mm-format-uses-a-wider-layout-48-chars-wide-display-the-formatted-receipt-text-so-it-can-be-copied-or-sent-to-a-printer-interface",
+      "title": "Add a Bluetooth Thermal Printer section in the invoice/billing screen: a printer toggle to select between 58mm and 80mm paper width, and a 'Print Receipt' button that generates ESC/POS formatted receipt text. The 58mm format uses a narrower column layout (~32 chars wide) and the 80mm format uses a wider layout (~48 chars wide). Display the formatted receipt text so it can be copied or sent to a printer interface.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-an-analytics-dashboard-screen-showing-today-s-sales-total-this-month-s-sales-total-in-a-summary-card-a-list-of-pending-unpaid-invoices-with-customer-name-and-amount-due-and-a-most-common-services-section-showing-the-top-services-by-frequency-use-visual-indicators-cards-progress-bars-or-simple-charts",
+      "title": "Build an Analytics Dashboard screen showing: today's sales total, this month's sales total in a summary card, a list of pending/unpaid invoices with customer name and amount due, and a 'Most Common Services' section showing the top services by frequency. Use visual indicators (cards, progress bars, or simple charts).",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-service-history-screen-with-a-search-bar-that-accepts-a-bike-number-input-on-search-display-a-chronological-list-of-all-past-service-records-for-that-bike-each-showing-invoice-number-date-services-performed-and-total-charged-tapping-a-record-expands-it-to-show-full-invoice-details",
+      "title": "Build a Service History screen with a search bar that accepts a Bike Number input. On search, display a chronological list of all past service records for that bike, each showing invoice number, date, services performed, and total charged. Tapping a record expands it to show full invoice details.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-generate-a-branded-app-logo-image-for-fusion-gear-a-gear-cog-mechanical-icon-combined-with-a-stylized-fg-monogram-suitable-for-use-as-an-app-header-logo-and-pdf-invoice-header-use-dark-background-with-amber-orange-metallic-tones",
+      "title": "Generate a branded app logo image for FUSION GEAR: a gear/cog mechanical icon combined with a stylized 'FG' monogram, suitable for use as an app header logo and PDF invoice header. Use dark background with amber/orange metallic tones.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Customer & Vehicle Profile: Name, Phone, Address, Bike Model, Bike Number, KM Reading, Fuel Level",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Service Engine: checklist (Oil Change, General Service, Engine Repair, Spare Parts), Custom Service field, Labour Charges field",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Billing Logic: sequential invoice number, date/time stamp, (Subtotal + Parts + Labour) - Discount = Total, optional GST toggle",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "PDF invoice generation: clean, branded PDF output",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "WhatsApp API integration: one-click send PDF invoice and service reminders to customer number",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Bluetooth Thermal Printer support: ESC/POS commands for 58mm and 80mm printers with toggle",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Analytics Dashboard: daily and monthly sales totals, pending payments list, most common services",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Service history: searchable database of all previous records by Bike Number",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Implement a Customer & Vehicle Profile module in the backend that stores and retrieves: customer Name, Phone number, Address, Bike Model, Bike Number (plate), current KM Reading, and Fuel Level. Support create, read, update, and delete operations. Phone number 8073670402 should be pre-configured as the garage owner contact.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Implement a Service record data model in the backend that stores: service type checklist (Oil Change, General Service, Engine Repair, Spare Parts — each as a boolean/selected flag), a Custom Service text field, Labour Charges amount, Spare Parts cost, Subtotal, Discount, GST flag and amount, and Total. Link each service record to a customer/vehicle profile.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Implement billing logic in the backend: auto-generate sequential invoice numbers (e.g., FG-0001, FG-0002…), auto-stamp creation date and time, calculate Total = (Subtotal + Spare Parts + Labour) - Discount, and optionally add GST (18% or configurable rate) when the GST toggle is enabled.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-18",
+      "summary": "Implement analytics data queries in the backend: daily sales total (sum of all invoice totals for today), monthly sales total (sum for the current month), list of invoices with pending/unpaid payment status, and a ranked list of most commonly selected services across all invoices.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-20",
+      "summary": "Implement a Service History module in the backend that supports searching all past service records by Bike Number, returning full invoice and service details for each match.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-21",
+      "summary": "Audit and fix all backend Motoko actor functions to ensure Customer/Vehicle profile CRUD, Service record creation, invoice auto-numbering (FG-0001, FG-0002…), billing calculations (Total = Subtotal + Parts + Labour - Discount + optional GST at 18%), analytics queries (daily/monthly totals, pending invoices, top services), and Service History search by bike number are all fully implemented, correct, and stable.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-22",
+      "summary": "Audit all frontend pages (Dashboard, Customer Profile, Create Bill, Invoice View, Service History) and fix any broken data flows, missing React Query wiring, or UI inconsistencies so that every screen fully reads from and writes to the backend actor.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-23",
+      "summary": "Polish the visual theme across all pages: ensure the dark charcoal/gunmetal background, amber/orange accents, large tap targets, and industrial typography are consistently applied with no mismatched colours, unstyled elements, or layout overflow issues on mobile viewports.",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-24",
+      "summary": "Ensure the PDF invoice generator produces a complete, correctly formatted PDF with the FUSION GEAR branding, contact number 8073670402, invoice number, date/time, customer and bike details, itemized service list, and full billing breakdown (subtotal, parts, labour, discount, GST if applicable, final total).",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-25",
+      "summary": "Ensure the WhatsApp Share button on the Invoice View page correctly pre-fills the customer's phone number and composes a message containing the invoice number, final total, and a service reminder note.",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-26",
+      "summary": "Ensure the Thermal Print section on the Invoice View page correctly renders ESC/POS-formatted receipt text for both 58mm (~32 chars wide) and 80mm (~48 chars wide) paper sizes, and the copy-to-clipboard action works reliably.",
+      "reqIds": [
+        "REQ-20"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "FUSION GEAR",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

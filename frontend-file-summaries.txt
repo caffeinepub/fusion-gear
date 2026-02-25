@@ -1,0 +1,6 @@
+{
+  "frontend/src/App.tsx": "Main app entry with TanStack Router setup, all routes defined including the previously missing ServiceHistoryPage import, and ThemeProvider/Toaster wrappers.",
+  "frontend/src/pages/DashboardPage.tsx": "Dashboard page showing daily/monthly sales, stats, pending invoices, and service frequency — uses `useNavigate` with typed `params` instead of template literal `to` props on Link components to fix type errors.",
+  "frontend/src/pages/CustomerProfilePage.tsx": "Customer list page with search, add/edit dialog, and delete confirmation — replaced `<Link to={template-literal}>` with `useNavigate` + `params` for type-safe programmatic navigation to the create-bill route.",
+  "frontend/src/pages/ServiceHistoryPage.tsx": "New service history page with bike number search form, chronological results list with expandable invoice detail cards, and programmatic navigation to full invoice view."
+}

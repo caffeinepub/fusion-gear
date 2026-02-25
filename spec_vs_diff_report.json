@@ -1,0 +1,61 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-25T08:41:58.878Z",
+  "summary": "The diff only modifies project_state.json (a metadata/state tracking file) and does not contain any actual code changes to backend Motoko files, frontend React pages, PDF generation, WhatsApp sharing, or thermal print logic. None of the six requirements (REQ-15 through REQ-20) appear to be implemented in the diff.",
+  "missing_requirements": [
+    {
+      "id": "REQ-15",
+      "requirement": "Audit and fix all backend Motoko actor functions to ensure Customer/Vehicle profile CRUD, Service record creation, invoice auto-numbering, billing calculations, analytics queries, and Service History search by bike number are all fully implemented, correct, and stable.",
+      "reason": "No changes to backend/main.mo or any Motoko source file are present in the diff. Only project_state.json was modified.",
+      "evidence": [
+        "project_state.json"
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "requirement": "Audit all frontend pages (Dashboard, Customer Profile, Create Bill, Invoice View, Service History) and fix any broken data flows, missing React Query wiring, or UI inconsistencies so that every screen fully reads from and writes to the backend actor.",
+      "reason": "No frontend page files, React Query hooks, or component files were added or modified in the diff.",
+      "evidence": [
+        "project_state.json"
+      ]
+    },
+    {
+      "id": "REQ-17",
+      "requirement": "Polish the visual theme across all pages: dark charcoal/gunmetal background, amber/orange accents, large tap targets, and industrial typography consistently applied with no layout overflow issues on mobile viewports.",
+      "reason": "No frontend CSS, Tailwind config, or component styling files were changed in the diff.",
+      "evidence": [
+        "project_state.json"
+      ]
+    },
+    {
+      "id": "REQ-18",
+      "requirement": "Ensure the PDF invoice generator produces a complete, correctly formatted PDF with FUSION GEAR branding, contact number 8073670402, invoice number, date/time, customer and bike details, itemized service list, and full billing breakdown.",
+      "reason": "No PDF generation utility or Invoice View component files were added or modified in the diff.",
+      "evidence": [
+        "project_state.json"
+      ]
+    },
+    {
+      "id": "REQ-19",
+      "requirement": "Ensure the WhatsApp Share button on the Invoice View page correctly pre-fills the customer's phone number and composes a message containing the invoice number, final total, and a service reminder note.",
+      "reason": "No Invoice View or WhatsApp sharing component files were added or modified in the diff.",
+      "evidence": [
+        "project_state.json"
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "requirement": "Ensure the Thermal Print section on the Invoice View page correctly renders ESC/POS-formatted receipt text for both 58mm and 80mm paper sizes, and the copy-to-clipboard action works reliably.",
+      "reason": "No thermal print utility or related component files were added or modified in the diff.",
+      "evidence": [
+        "project_state.json"
+      ]
+    }
+  ],
+  "hallucinated_features": [],
+  "confidence": 0.97,
+  "changed_files": [
+    "project_state.json"
+  ]
+}
